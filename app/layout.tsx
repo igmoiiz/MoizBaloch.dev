@@ -1,16 +1,18 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Fraunces, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", style: ["normal", "italic"] })
+const jetbrains = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains" })
 
 export const metadata: Metadata = {
-  title: "Abdul Moiz - Flutter Developer & Mobile Engineer",
-  description: "Personal portfolio of Abdul Moiz (Moiz Baloch), a Flutter Developer and Full-Stack Mobile Engineer",
-    generator: 'v0.dev'
+  title: "Moiz Baloch — AI/ML Engineer",
+  description:
+    "Portfolio of Moiz Baloch, an AI/ML engineer and CS undergraduate building machine-learning, deep-learning, and LLM systems from experimentation to deployment.",
 }
 
 export default function RootLayout({
@@ -20,7 +22,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body
+        className={`${inter.variable} ${fraunces.variable} ${jetbrains.variable} grain bg-background text-foreground font-sans`}
+      >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           {children}
           <Toaster />

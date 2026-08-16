@@ -1,60 +1,57 @@
-"use client"
+import { GraduationCap } from "lucide-react"
+import Reveal from "@/components/reveal"
+import SectionHeading from "@/components/section-heading"
 
-import { motion } from "framer-motion"
-import { Calendar, GraduationCap } from "lucide-react"
+const COURSEWORK = [
+  "Machine Learning",
+  "Deep Learning",
+  "Data Structures & Algorithms",
+  "Databases",
+  "Mobile Application Development",
+]
 
 export default function Education() {
   return (
-    <div className="container mx-auto">
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-        className="mb-12 text-center"
-      >
-        <h2 className="text-3xl md:text-4xl font-bold mb-2">Education</h2>
-        <div className="w-20 h-1 bg-cyan-400 mx-auto"></div>
-      </motion.div>
+    <section id="education" className="mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-36 lg:px-16">
+      <SectionHeading
+        index="07"
+        eyebrow="Education"
+        title={
+          <>
+            Where I&apos;m{" "}
+            <span className="font-serif italic text-champagne">learning.</span>
+          </>
+        }
+      />
 
-      <div className="max-w-3xl mx-auto">
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="relative pl-8 pb-12 border-l-2 border-gray-700"
-        >
-          <div className="absolute left-[-10px] top-0 w-5 h-5 rounded-full bg-cyan-400"></div>
-
-          <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-6 shadow-lg border border-gray-800">
-            <div className="flex items-center mb-4">
-              <GraduationCap className="mr-2 text-cyan-400" size={20} />
-              <h3 className="text-xl font-bold">Bachelor of Science in Computer Science (BSCS)</h3>
+      <Reveal>
+        <div className="grid gap-px overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.08] md:grid-cols-2">
+          <div className="bg-[#0d0d0d] p-8">
+            <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.03]">
+              <GraduationCap className="h-5 w-5 text-champagne" />
             </div>
-
-            <h4 className="text-lg font-medium mb-2">Air University, Multan Campus</h4>
-
-            <div className="flex items-center mb-4 text-gray-400">
-              <Calendar className="mr-2" size={16} />
-              <span>October 2023 – Present</span>
-            </div>
-
-            <div className="space-y-3 text-gray-300">
-              <p>Currently in 5th Semester</p>
-              <p>CGPA: 3.01</p>
-              <p>Relevant Coursework:</p>
-              <ul className="list-disc list-inside pl-4 space-y-1">
-                <li>Data Structures and Algorithms</li>
-                <li>Object-Oriented Programming</li>
-                <li>Database Management Systems</li>
-                <li>Web Development</li>
-                <li>Mobile Application Development</li>
-              </ul>
-            </div>
+            <h3 className="mt-6 font-serif text-2xl tracking-tight">B.S. Computer Science</h3>
+            <p className="mt-2 text-muted-foreground">Air University, Multan Campus</p>
+            <p className="mt-4 font-mono text-sm text-champagne">Oct 2023 — Jun 2027</p>
+            <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+              Final-year project: <span className="text-foreground">Al-Safeena</span> — the live home-services
+              marketplace built for a Saudi Arabian client.
+            </p>
           </div>
-        </motion.div>
-      </div>
-    </div>
+
+          <div className="bg-[#0d0d0d] p-8">
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">Relevant coursework</p>
+            <ul className="mt-6 space-y-3">
+              {COURSEWORK.map((course) => (
+                <li key={course} className="flex items-center gap-3 font-mono text-sm text-muted-foreground">
+                  <span className="h-1 w-1 rounded-full bg-champagne" />
+                  {course}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Reveal>
+    </section>
   )
 }

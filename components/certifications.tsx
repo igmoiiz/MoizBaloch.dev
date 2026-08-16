@@ -1,59 +1,65 @@
-"use client"
+import { Award } from "lucide-react"
+import Reveal from "@/components/reveal"
+import SectionHeading from "@/components/section-heading"
 
-import { motion } from "framer-motion"
-import { Calendar, Award, ExternalLink } from "lucide-react"
-import { Button } from "@/components/ui/button"
+interface Certification {
+  name: string
+  issuer: string
+  date: string
+  detail: string
+}
+
+const CERTIFICATIONS: Certification[] = [
+  {
+    name: "GIKI Advance AI Bootcamp",
+    issuer: "Ghulam Ishaq Khan Institute (GIKI)",
+    date: "Jul — Aug 2026",
+    detail: "Intensive bootcamp covering modern AI and ML engineering practice, from training to deployment.",
+  },
+  {
+    name: "Anthropic Claude 101 Courses",
+    issuer: "Anthropic",
+    date: "2026",
+    detail: "Hands-on LLM engineering foundations, including Claude Code and model best practices.",
+  },
+]
 
 export default function Certifications() {
   return (
-    <div className="container mx-auto">
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-        className="mb-12 text-center"
-      >
-        <h2 className="text-3xl md:text-4xl font-bold mb-2">Certifications</h2>
-        <div className="w-20 h-1 bg-cyan-400 mx-auto"></div>
-      </motion.div>
+    <section id="certifications" className="border-y border-white/[0.06] bg-[#080808]">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-36 lg:px-16">
+        <SectionHeading
+          index="08"
+          eyebrow="Certifications"
+          title={
+            <>
+              Formally{" "}
+              <span className="font-serif italic text-champagne">trained.</span>
+            </>
+          }
+        />
 
-      <div className="max-w-3xl mx-auto">
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="relative pl-8 pb-12 border-l-2 border-gray-700"
-        >
-          <div className="absolute left-[-10px] top-0 w-5 h-5 rounded-full bg-cyan-400"></div>
+        <div className="grid gap-6 md:grid-cols-2">
+          {CERTIFICATIONS.map((cert, i) => (
+            <Reveal key={cert.name} delay={0.08 * i}>
+              <div className="group h-full rounded-xl border border-white/[0.08] bg-[#0d0d0d] p-7 transition-colors duration-300 hover:border-champagne/25">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.03]">
+                    <Award className="h-5 w-5 text-champagne" />
+                  </div>
+                  <span className="rounded-full border border-white/[0.1] px-3 py-1 font-mono text-[11px] text-muted-foreground">
+                    {cert.date}
+                  </span>
+                </div>
 
-          <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-6 shadow-lg border border-gray-800">
-            <div className="flex items-center mb-4">
-              <Award className="mr-2 text-cyan-400" size={20} />
-              <h3 className="text-xl font-bold">Web Enumeration</h3>
-            </div>
-
-            <h4 className="text-lg font-medium mb-2">Udemy</h4>
-
-            <div className="flex items-center mb-4 text-gray-400">
-              <Calendar className="mr-2" size={16} />
-              <span>Completed: July 26, 2024</span>
-            </div>
-
-            <p className="text-gray-300 mb-4">
-              Comprehensive course on Ethical Hacking & Web Enumeration techniques, covering vulnerability assessment,
-              penetration testing methodologies, and security best practices.
-            </p>
-
-            <div className="flex items-center">
-              <Button variant="outline" className="text-cyan-400 border-cyan-400 hover:bg-cyan-400/10 bg-transparent">
-                <ExternalLink className="mr-2 h-4 w-4" /> View Certificate
-              </Button>
-            </div>
-          </div>
-        </motion.div>
+                <h3 className="mt-6 font-serif text-xl tracking-tight">{cert.name}</h3>
+                <p className="mt-1 font-mono text-sm text-champagne">{cert.issuer}</p>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{cert.detail}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   )
 }

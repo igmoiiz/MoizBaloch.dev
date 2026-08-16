@@ -1,66 +1,80 @@
-"use client"
+import Reveal from "@/components/reveal"
+import SectionHeading from "@/components/section-heading"
 
-import { motion } from "framer-motion"
-
-const skills = [
-  { name: "Flutter", icon: "🔷", level: 90 },
-  { name: "Dart", icon: "🎯", level: 90 },
-  { name: "Firebase", icon: "🔥", level: 85 },
-  { name: "Supabase", icon: "⚡", level: 80 },
-  { name: "Node.js", icon: "🟢", level: 75 },
-  { name: "REST APIs", icon: "🌐", level: 85 },
-  { name: "Google Maps", icon: "🗺️", level: 80 },
-  { name: "Python", icon: "🐍", level: 70 },
-  { name: "C++", icon: "⚙️", level: 65 },
-  { name: "Postman", icon: "📬", level: 80 },
-  { name: "Provider", icon: "🔄", level: 85 },
-  { name: "State Management", icon: "📊", level: 85 },
-  { name: "UI/UX Design", icon: "🎨", level: 75 },
+const CATEGORIES = [
+  {
+    title: "ML frameworks",
+    accent: "//",
+    tags: ["PyTorch", "TensorFlow", "Hugging Face", "scikit-learn", "XGBoost", "LightGBM", "CatBoost"],
+  },
+  {
+    title: "Deep learning & vision",
+    accent: ">>",
+    tags: ["CNNs", "EfficientNet", "YOLO11", "OpenCV", "ByteTrack", "MediaPipe"],
+  },
+  {
+    title: "NLP / LLMs",
+    accent: "~",
+    tags: ["Transformers", "PEFT", "LoRA", "QLoRA", "TRL", "BitsAndBytes"],
+  },
+  {
+    title: "MLOps & serving",
+    accent: "$",
+    tags: ["FastAPI", "Docker", "MLflow", "DVC", "Git", "PostgreSQL"],
+  },
+  {
+    title: "Languages & tools",
+    accent: ">",
+    tags: ["Python", "SQL", "Dart", "JavaScript", "C++", "Rust", "Flutter", "Node.js"],
+  },
+  {
+    title: "Currently exploring",
+    accent: "?",
+    tags: ["KV caching", "quantization", "MoE routing", "inference engines", "FlashAttention", "RAG"],
+  },
 ]
 
 export default function Skills() {
   return (
-    <div className="container mx-auto">
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-        className="mb-12 text-center"
-      >
-        <h2 className="text-3xl md:text-4xl font-bold mb-2">Skills</h2>
-        <div className="w-20 h-1 bg-cyan-400 mx-auto"></div>
-      </motion.div>
+    <section id="skills" className="border-y border-white/[0.06] bg-[#080808]">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-36 lg:px-16">
+        <SectionHeading
+          index="02"
+          eyebrow="Skills"
+          title={
+            <>
+              The stack I build with,{" "}
+              <span className="font-serif italic text-champagne">end to end.</span>
+            </>
+          }
+          description="From model training and fine-tuning to serving, deployment, and the infrastructure that keeps AI systems running."
+        />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {skills.map((skill, index) => (
-          <motion.div
-            key={skill.name}
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.03 }}
-            className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-6 shadow-lg border border-gray-800"
-          >
-            <div className="flex items-center mb-4">
-              <span className="text-2xl mr-3">{skill.icon}</span>
-              <h3 className="text-xl font-semibold">{skill.name}</h3>
-            </div>
-
-            <div className="w-full bg-gray-700 rounded-full h-2.5">
-              <motion.div
-                className="bg-gradient-to-r from-cyan-500 to-blue-500 h-2.5 rounded-full"
-                initial={{ width: 0 }}
-                whileInView={{ width: `${skill.level}%` }}
-                transition={{ duration: 1, delay: 0.2 }}
-                viewport={{ once: true }}
-              ></motion.div>
-            </div>
-            <div className="mt-2 text-right text-sm text-gray-400">{skill.level}%</div>
-          </motion.div>
-        ))}
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {CATEGORIES.map((cat, i) => (
+            <Reveal key={cat.title} delay={0.06 * i}>
+              <div className="group flex h-full flex-col rounded-xl border border-white/[0.08] bg-[#0d0d0d] p-6 transition-colors duration-300 hover:border-champagne/30">
+                <div className="mb-5 flex items-center justify-between">
+                  <h3 className="font-mono text-xs uppercase tracking-[0.3em] text-champagne">{cat.title}</h3>
+                  <span className="font-mono text-sm text-white/20 transition-colors group-hover:text-champagne/60">
+                    {cat.accent}
+                  </span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {cat.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-md border border-white/[0.08] bg-white/[0.02] px-2.5 py-1 font-mono text-[13px] text-muted-foreground transition-colors group-hover:border-white/[0.12]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   )
 }

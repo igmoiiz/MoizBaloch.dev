@@ -4,137 +4,120 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { smoothScrollTo } from "@/lib/smooth-scroll"
 
-interface NavbarProps {
-  scrollToSection: (sectionId: string) => void
-}
+const NAV_ITEMS = [
+  { name: "About", id: "about" },
+  { name: "Skills", id: "skills" },
+  { name: "Projects", id: "projects" },
+  { name: "Roadmap", id: "roadmap" },
+  { name: "Experience", id: "experience" },
+  { name: "Publications", id: "publications" },
+  { name: "Contact", id: "contact" },
+]
 
-export default function Navbar({ scrollToSection }: NavbarProps) {
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-
-    window.addEventListener("scroll", handleScroll)
+    const handleScroll = () => setIsScrolled(window.scrollY > 24)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const handleResumeDownload = () => {
     const link = document.createElement("a")
     link.href = "/resume.pdf"
-    link.download = "Abdul_Moiz_Resume.pdf"
+    link.download = "Moiz_Baloch_Resume.pdf"
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
   }
 
-  const navItems = [
-    { name: "Home", id: "hero" },
-    { name: "About", id: "about" },
-    { name: "Skills", id: "skills" },
-    { name: "Projects", id: "projects" },
-    { name: "Experience", id: "experience" },
-    { name: "Education", id: "education" },
-    { name: "Certifications", id: "certifications" },
-    { name: "Contact", id: "contact" },
-  ]
+  const go = (id: string) => {
+    smoothScrollTo(id)
+    setIsMenuOpen(false)
+  }
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-gray-900/90 backdrop-blur-md py-2 shadow-lg" : "bg-transparent py-4"
+    <motion.header
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
+        isScrolled ? "border-b border-white/[0.06] bg-[#060606]/85 backdrop-blur-md" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-xl font-bold"
+      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:px-10 lg:px-16">
+        <button
+          onClick={() => go("hero")}
+          className="group flex items-center gap-2"
+          data-cursor
         >
-          <span className="text-cyan-400">Moiz</span> Baloch
-        </motion.div>
+          <span className="font-serif text-xl tracking-tight">
+            Moiz<span className="text-champagne">.</span>
+          </span>
+        </button>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-1">
-          {navItems.map((item, index) => (
-            <motion.div
+        <div className="hidden items-center gap-1 lg:flex">
+          {NAV_ITEMS.map((item) => (
+            <button
               key={item.id}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.1 * index }}
+              onClick={() => go(item.id)}
+              className="rounded-md px-3 py-1.5 font-mono text-[13px] text-muted-foreground transition-colors hover:bg-white/[0.04] hover:text-champagne"
+              data-cursor
             >
-              <Button
-                variant="ghost"
-                onClick={() => scrollToSection(item.id)}
-                className="text-gray-300 hover:text-white hover:bg-gray-800/50"
-              >
-                {item.name}
-              </Button>
-            </motion.div>
+              {item.name}
+            </button>
           ))}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3, delay: 0.8 }}
+        </div>
+
+        <div className="flex items-center gap-3">
+          <Button
+            onClick={handleResumeDownload}
+            className="hidden border border-champagne/40 bg-transparent px-4 py-1.5 font-mono text-[13px] text-champagne hover:bg-champagne hover:text-black md:inline-flex"
           >
-            <Button
-              variant="outline"
-              className="ml-4 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 bg-transparent"
-              onClick={handleResumeDownload}
-            >
-              Download Resume
-            </Button>
-          </motion.div>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-300">
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            Resume
           </Button>
-        </div>
-      </div>
 
-      {/* Mobile Menu */}
+          <button
+            className="flex h-10 w-10 items-center justify-center rounded-md border border-white/[0.1] text-muted-foreground transition-colors hover:text-champagne lg:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+      </nav>
+
       {isMenuOpen && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
-          className="md:hidden bg-gray-900/95 backdrop-blur-md"
+          transition={{ duration: 0.25 }}
+          className="overflow-hidden border-b border-white/[0.06] bg-[#060606]/95 backdrop-blur-md lg:hidden"
         >
-          <div className="container mx-auto px-4 py-4 flex flex-col space-y-2">
-            {navItems.map((item) => (
-              <Button
+          <div className="space-y-1 px-6 py-4">
+            {NAV_ITEMS.map((item) => (
+              <button
                 key={item.id}
-                variant="ghost"
-                onClick={() => {
-                  scrollToSection(item.id)
-                  setIsMenuOpen(false)
-                }}
-                className="justify-start text-gray-300 hover:text-white hover:bg-gray-800/50"
+                onClick={() => go(item.id)}
+                className="block w-full rounded-md px-3 py-2.5 text-left font-mono text-sm text-muted-foreground transition-colors hover:bg-white/[0.04] hover:text-champagne"
               >
                 {item.name}
-              </Button>
+              </button>
             ))}
-            <Button
-              variant="outline"
-              className="border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 bg-transparent"
+            <button
               onClick={handleResumeDownload}
+              className="mt-2 block w-full rounded-md border border-champagne/40 px-3 py-2.5 text-left font-mono text-sm text-champagne transition-colors hover:bg-champagne hover:text-black"
             >
               Download Resume
-            </Button>
+            </button>
           </div>
         </motion.div>
       )}
-    </motion.nav>
+    </motion.header>
   )
 }

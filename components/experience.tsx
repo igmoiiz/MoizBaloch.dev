@@ -1,85 +1,103 @@
-"use client"
+import Reveal from "@/components/reveal"
+import SectionHeading from "@/components/section-heading"
 
-import { motion } from "framer-motion"
-import { Calendar, Briefcase } from "lucide-react"
+interface ExperienceEntry {
+  company: string
+  location: string
+  role: string
+  duration: string
+  bullets: string[]
+  tech: string[]
+}
 
-const experiences = [
+const EXPERIENCE: ExperienceEntry[] = [
   {
-    id: 1,
-    company: "Brain Hub Technologies",
-    position: "Flutter Developer",
-    duration: "October 2024 – December 2024",
-    description: [
-      "Developed cross-platform mobile applications for various clients using Flutter",
-      "Collaborated with design teams to implement pixel-perfect UI/UX designs",
-      "Integrated REST APIs and third-party services for enhanced app functionality",
-      "Optimized app performance and implemented state management solutions",
-      "Participated in code reviews and maintained high code quality standards",
+    company: "Brain Hub Technologies (Trade With Shaw)",
+    location: "Multan, Pakistan",
+    role: "AI/ML & Mobile Developer Intern",
+    duration: "Jun 2025 — Oct 2025",
+    bullets: [
+      "As the only AI/ML developer on the team, designed and deployed stock-price prediction models using Python-based ML pipelines — contributing to a ~30% increase in trading revenue across internal operations and international client portfolios.",
+      "Built end-to-end pipelines from feature engineering to model serving, ensuring consistent, measurable performance across multiple client portfolios.",
     ],
+    tech: ["Python", "scikit-learn", "XGBoost", "FastAPI", "ML pipelines"],
   },
   {
-    id: 2,
-    company: "NOCTEX",
-    position: "Freelance Software Maintenance",
-    duration: "January 2025 – March 2025",
-    description: [
-      "Performed code optimization for existing Flutter applications",
-      "Implemented feature enhancements based on client requirements",
-      "Integrated push notification systems for improved user engagement",
-      "Debugged and resolved performance issues in production applications",
-      "Collaborated with remote team members to meet project deadlines",
+    company: "Al-Safeena",
+    location: "Saudi Arabia · Remote",
+    role: "Senior Mobile Application Developer",
+    duration: "Oct 2025 — Jul 2026",
+    bullets: [
+      "Built a home-services freelance marketplace giving Saudi vendors a centralized platform for consistent business — using Flutter and Node.js backends — contributing to a ~40% increase in company revenue.",
+      "Continuing as final-year project: managing incremental feature development and deployment of the live platform.",
     ],
+    tech: ["Flutter", "Dart", "Node.js", "MongoDB", "Socket.IO"],
   },
 ]
 
 export default function Experience() {
   return (
-    <div className="container mx-auto">
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-        className="mb-12 text-center"
-      >
-        <h2 className="text-3xl md:text-4xl font-bold mb-2">Experience</h2>
-        <div className="w-20 h-1 bg-cyan-400 mx-auto"></div>
-      </motion.div>
+    <section id="experience" className="border-y border-white/[0.06] bg-[#080808]">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-36 lg:px-16">
+        <SectionHeading
+          index="06"
+          eyebrow="Experience"
+          title={
+            <>
+              Where I&apos;ve{" "}
+              <span className="font-serif italic text-champagne">shipped.</span>
+            </>
+          }
+        />
 
-      <div className="max-w-4xl mx-auto">
-        {experiences.map((experience, index) => (
-          <motion.div
-            key={experience.id}
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-            viewport={{ once: true }}
-            className={`relative pl-8 ${index < experiences.length - 1 ? "pb-12" : ""} border-l-2 border-gray-700`}
-          >
-            <div className="absolute left-[-10px] top-0 w-5 h-5 rounded-full bg-cyan-400"></div>
-
-            <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-6 shadow-lg border border-gray-800">
-              <div className="flex items-center mb-4">
-                <Briefcase className="mr-2 text-cyan-400" size={20} />
-                <h3 className="text-xl font-bold">
-                  {experience.company} – {experience.position}
-                </h3>
+        <div className="mx-auto max-w-3xl">
+          {EXPERIENCE.map((entry, i) => (
+            <Reveal key={entry.company} delay={0.1 * i} className="relative pb-14 pl-10 last:pb-0">
+              <div
+                className={`absolute left-0 top-1 h-full border-l border-white/[0.08] ${i === EXPERIENCE.length - 1 ? "hidden" : ""}`}
+              />
+              <div className="absolute left-[-5px] top-1.5 flex h-[11px] w-[11px] items-center justify-center">
+                <span className="absolute h-[11px] w-[11px] rounded-full bg-champagne/25" />
+                <span className="h-[5px] w-[5px] rounded-full bg-champagne" />
               </div>
 
-              <div className="flex items-center mb-4 text-gray-400">
-                <Calendar className="mr-2" size={16} />
-                <span>{experience.duration}</span>
-              </div>
+              <div className="rounded-xl border border-white/[0.08] bg-[#0d0d0d] p-6 transition-colors duration-300 hover:border-champagne/25 md:p-8">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex items-center gap-3">
+                    <h3 className="font-serif text-xl tracking-tight">{entry.company}</h3>
+                  </div>
+                  <span className="rounded-full border border-white/[0.1] px-3 py-1 font-mono text-[11px] text-muted-foreground">
+                    {entry.duration}
+                  </span>
+                </div>
 
-              <ul className="list-disc list-inside text-gray-300 space-y-2">
-                {experience.description.map((item, itemIndex) => (
-                  <li key={itemIndex}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
-        ))}
+                <p className="mt-1 font-mono text-sm text-champagne">{entry.role}</p>
+                <p className="mt-1 font-mono text-xs text-white/30">{entry.location}</p>
+
+                <ul className="mt-6 space-y-3">
+                  {entry.bullets.map((bullet) => (
+                    <li key={bullet} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                      <span className="mt-1 shrink-0 font-mono text-champagne">&gt;</span>
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {entry.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-md border border-white/[0.08] px-2 py-0.5 font-mono text-[11px] text-muted-foreground"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   )
 }

@@ -1,135 +1,131 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
-import { motion } from "framer-motion"
-import { Github, Linkedin, Mail, Phone, Send } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Github, Linkedin, Mail, MapPin, MessageCircle, Phone } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { toast } from "@/components/ui/use-toast"
+import Reveal from "@/components/reveal"
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+  const composeBody = [
+    `Name: ${formData.name || "—"}`,
+    `Email: ${formData.email || "—"}`,
+    `Phone: ${formData.phone || "—"}`,
+    "",
+    formData.message || "Hello Moiz, I'd like to talk about a project or opportunity.",
+  ].join("\n")
 
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thanks for reaching out. I'll get back to you soon.",
-      })
-      setFormData({ name: "", email: "", message: "" })
-      setIsSubmitting(false)
-    }, 1500)
-  }
+  const subject = `Portfolio contact${formData.name ? ` from ${formData.name}` : ""}`
+  const gmailHref = `https://mail.google.com/mail/?view=cm&fs=1&to=moaiz3110@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(composeBody)}`
+  const whatsappHref = `https://wa.me/923067892235?text=${encodeURIComponent(composeBody)}`
+
+  const inputClass = "border-white/[0.1] bg-white/[0.02] text-foreground placeholder:text-muted-foreground/60 focus-visible:ring-champagne"
 
   return (
-    <div className="container mx-auto">
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-        className="mb-12 text-center"
-      >
-        <h2 className="text-3xl md:text-4xl font-bold mb-2">Contact Me</h2>
-        <div className="w-20 h-1 bg-cyan-400 mx-auto"></div>
-      </motion.div>
+    <section id="contact" className="mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-36 lg:px-16">
+      <Reveal>
+        <div className="mb-16 flex items-center gap-4 md:mb-20">
+          <span className="font-mono text-sm text-champagne">09</span>
+          <span className="h-px w-12 bg-champagne/40" />
+          <span className="font-mono text-xs uppercase tracking-[0.35em] text-muted-foreground">Contact</span>
+        </div>
+        <h2 className="font-serif text-4xl leading-tight tracking-tight md:text-6xl">
+          Let&apos;s build something{" "}
+          <span className="font-serif italic text-champagne">intelligent.</span>
+        </h2>
+      </Reveal>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <motion.div
-          initial={{ x: -50, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
-
-          <p className="text-gray-300 mb-8">
-            I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision. Feel
-            free to reach out through the form or via my social links.
+      <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-20">
+        <Reveal delay={0.1}>
+          <p className="text-lg leading-relaxed text-muted-foreground">
+            Open to AI/ML engineering roles, research collaboration, and interesting projects. If you&apos;re building
+            something in the ML or LLM space, I&apos;d like to hear about it.
           </p>
 
-          <div className="space-y-4 mb-8">
-            <div className="flex items-center">
-              <div className="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mr-4">
-                <Mail className="text-cyan-400" size={20} />
-              </div>
-              <div>
-                <p className="text-sm text-gray-400">Email</p>
-                <a href="mailto:moaiz3110@gmail.com" className="hover:text-cyan-400 transition-colors">
+          <div className="mt-10 space-y-5">
+            <a
+              href="mailto:moaiz3110@gmail.com"
+              className="group flex items-center gap-4"
+              data-cursor
+            >
+              <span className="flex h-11 w-11 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.02] transition-colors group-hover:border-champagne/40">
+                <Mail className="h-5 w-5 text-champagne" />
+              </span>
+              <span>
+                <span className="block font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Email</span>
+                <span className="text-sm text-foreground transition-colors group-hover:text-champagne">
                   moaiz3110@gmail.com
-                </a>
-              </div>
-            </div>
+                </span>
+              </span>
+            </a>
 
-            <div className="flex items-center">
-              <div className="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mr-4">
-                <Phone className="text-cyan-400" size={20} />
-              </div>
-              <div>
-                <p className="text-sm text-gray-400">Phone</p>
-                <a href="tel:+923067892235" className="hover:text-cyan-400 transition-colors">
+            <a href="tel:+923067892235" className="group flex items-center gap-4" data-cursor>
+              <span className="flex h-11 w-11 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.02] transition-colors group-hover:border-champagne/40">
+                <Phone className="h-5 w-5 text-champagne" />
+              </span>
+              <span>
+                <span className="block font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Phone</span>
+                <span className="text-sm text-foreground transition-colors group-hover:text-champagne">
                   +92 306 7892235
-                </a>
-              </div>
+                </span>
+              </span>
+            </a>
+
+            <div className="flex items-center gap-4">
+              <span className="flex h-11 w-11 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.02]">
+                <MapPin className="h-5 w-5 text-champagne" />
+              </span>
+              <span>
+                <span className="block font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Based in</span>
+                <span className="text-sm text-foreground">Multan, Pakistan</span>
+              </span>
             </div>
           </div>
 
-          <div className="flex space-x-4">
+          <div className="mt-10 flex gap-3">
             <a
               href="https://github.com/igmoiiz"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors"
+              className="flex h-11 w-11 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.02] text-muted-foreground transition-all hover:border-champagne/40 hover:text-champagne"
+              data-cursor
             >
-              <Github className="text-cyan-400" size={20} />
+              <Github className="h-5 w-5" />
             </a>
             <a
-              href="https://www.linkedin.com/in/moaiz-baloch-a615392b4"
+              href="https://www.linkedin.com/in/moiz-baloch-a615392b4"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors"
+              className="flex h-11 w-11 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.02] text-muted-foreground transition-all hover:border-champagne/40 hover:text-champagne"
+              data-cursor
             >
-              <Linkedin className="text-cyan-400" size={20} />
-            </a>
-            <a
-              href="mailto:moaiz3110@gmail.com"
-              className="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors"
-            >
-              <Mail className="text-cyan-400" size={20} />
+              <Linkedin className="h-5 w-5" />
             </a>
           </div>
-        </motion.div>
+        </Reveal>
 
-        <motion.div
-          initial={{ x: 50, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          <form
-            onSubmit={handleSubmit}
-            className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-6 shadow-lg border border-gray-800"
-          >
-            <div className="space-y-4">
+        <Reveal delay={0.2}>
+          <div className="rounded-xl border border-white/[0.08] bg-[#0d0d0d] p-6 md:p-8">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              Quick compose
+            </p>
+
+            <div className="mt-6 space-y-5">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
+                <label htmlFor="name" className="mb-2 block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
                   Name
                 </label>
                 <Input
@@ -138,13 +134,12 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Your name"
-                  required
-                  className="bg-gray-800 border-gray-700"
+                  className={inputClass}
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
+                <label htmlFor="email" className="mb-2 block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
                   Email
                 </label>
                 <Input
@@ -154,65 +149,66 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="your.email@example.com"
-                  required
-                  className="bg-gray-800 border-gray-700"
+                  className={inputClass}
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Message
+                <label htmlFor="phone" className="mb-2 block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  Phone
+                </label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="+92 300 0000000"
+                  className={inputClass}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="mb-2 block font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  What do you need?
                 </label>
                 <Textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Your message"
-                  required
-                  className="bg-gray-800 border-gray-700 min-h-[150px]"
+                  placeholder="Tell me about your project or role…"
+                  className={`${inputClass} min-h-[130px]`}
                 />
               </div>
 
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
+              <a
+                href={gmailHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex w-full items-center justify-center gap-2 rounded-lg bg-champagne px-6 py-3.5 text-sm font-semibold text-black transition-colors hover:bg-champagne-bright"
+                data-cursor
               >
-                {isSubmitting ? (
-                  <span className="flex items-center">
-                    <svg
-                      className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      ></circle>
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
-                    </svg>
-                    Sending...
-                  </span>
-                ) : (
-                  <span className="flex items-center">
-                    <Send className="mr-2 h-4 w-4" /> Send Message
-                  </span>
-                )}
-              </Button>
+                <Mail className="h-4 w-4" /> Open in Gmail
+              </a>
+
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex w-full items-center justify-center gap-2 rounded-lg border border-white/[0.12] px-6 py-3.5 text-sm font-medium text-foreground transition-colors hover:border-champagne/40 hover:text-champagne"
+                data-cursor
+              >
+                <MessageCircle className="h-4 w-4" /> WhatsApp me
+              </a>
+
+              <p className="text-xs leading-relaxed text-muted-foreground">
+                Nothing is sent automatically — this opens a pre-filled draft in Gmail or a chat in WhatsApp.
+              </p>
             </div>
-          </form>
-        </motion.div>
+          </div>
+        </Reveal>
       </div>
-    </div>
+    </section>
   )
 }
