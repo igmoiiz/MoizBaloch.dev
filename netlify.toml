@@ -1,0 +1,6 @@
+[build]
+  command = "npx --yes pnpm@9 run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
