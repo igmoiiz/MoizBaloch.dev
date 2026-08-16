@@ -11,9 +11,9 @@ import { smoothScrollTo } from "@/lib/smooth-scroll"
 const Hero3D = dynamic(() => import("@/components/hero-3d"), { ssr: false })
 
 const ROLES = [
-  "fine-tuning llms with qlora",
+  "fine tuning llms with qlora",
   "deploying models via fastapi",
-  "building computer-vision systems",
+  "building computer vision systems",
   "engineering atlasllm from scratch",
 ]
 
@@ -95,8 +95,8 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground"
             >
-              A Computer Science undergraduate building machine-learning, deep-learning, and LLM systems from
-              experimentation to production — fine-tuning models, serving them, and engineering the infrastructure
+              A Computer Science undergraduate building machine learning, deep learning, and LLM systems, from
+              experimentation to production. Fine tuning models, serving them, and engineering the infrastructure
               around them.
             </motion.p>
 

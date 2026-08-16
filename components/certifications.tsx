@@ -13,14 +13,14 @@ const CERTIFICATIONS: Certification[] = [
   {
     name: "GIKI Advance AI Bootcamp",
     issuer: "Ghulam Ishaq Khan Institute (GIKI)",
-    date: "Jul — Aug 2026",
+    date: "Jul to Aug 2026",
     detail: "Intensive bootcamp covering modern AI and ML engineering practice, from training to deployment.",
   },
   {
     name: "Anthropic Claude 101 Courses",
     issuer: "Anthropic",
     date: "2026",
-    detail: "Hands-on LLM engineering foundations, including Claude Code and model best practices.",
+    detail: "Hands on LLM engineering foundations, including Claude Code and model best practices.",
   },
 ]
 

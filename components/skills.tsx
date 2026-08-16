@@ -39,7 +39,7 @@ export default function Skills() {
     <section id="skills" className="border-y border-white/[0.06] bg-[#080808]">
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-36 lg:px-16">
         <SectionHeading
-          index="02"
+          index="03"
           eyebrow="Skills"
           title={
             <>
@@ -47,7 +47,7 @@ export default function Skills() {
               <span className="font-serif italic text-champagne">end to end.</span>
             </>
           }
-          description="From model training and fine-tuning to serving, deployment, and the infrastructure that keeps AI systems running."
+          description="From model training and fine tuning to serving, deployment, and the infrastructure that keeps AI systems running."
         />
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">

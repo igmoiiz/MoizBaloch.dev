@@ -21,9 +21,9 @@ export default function Contact() {
   }
 
   const composeBody = [
-    `Name: ${formData.name || "—"}`,
-    `Email: ${formData.email || "—"}`,
-    `Phone: ${formData.phone || "—"}`,
+    `Name: ${formData.name || "N/A"}`,
+    `Email: ${formData.email || "N/A"}`,
+    `Phone: ${formData.phone || "N/A"}`,
     "",
     formData.message || "Hello Moiz, I'd like to talk about a project or opportunity.",
   ].join("\n")
@@ -38,7 +38,7 @@ export default function Contact() {
     <section id="contact" className="mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-36 lg:px-16">
       <Reveal>
         <div className="mb-16 flex items-center gap-4 md:mb-20">
-          <span className="font-mono text-sm text-champagne">09</span>
+          <span className="font-mono text-sm text-champagne">10</span>
           <span className="h-px w-12 bg-champagne/40" />
           <span className="font-mono text-xs uppercase tracking-[0.35em] text-muted-foreground">Contact</span>
         </div>
@@ -203,7 +203,7 @@ export default function Contact() {
               </a>
 
               <p className="text-xs leading-relaxed text-muted-foreground">
-                Nothing is sent automatically — this opens a pre-filled draft in Gmail or a chat in WhatsApp.
+                Nothing is sent automatically. This opens a prefilled draft in Gmail or a chat in WhatsApp.
               </p>
             </div>
           </div>

@@ -18,7 +18,7 @@ const PROJECTS: Project[] = [
     slug: "vision-guard",
     title: "VisionGuard",
     description:
-      "Commercial-grade computer-vision platform analyzing live webcam, USB, RTSP, and IP streams in real time — YOLO11 detection, ByteTrack tracking, and a 9-rule event engine served through a FastAPI + WebSocket API.",
+      "Commercial-grade computer vision platform analyzing live webcam, USB, RTSP, and IP streams in real time, with YOLO11 detection, ByteTrack tracking, and an event engine with nine rules served through a FastAPI + WebSocket API.",
     year: "2026",
     status: "Completed",
     tech: ["YOLO11", "ByteTrack", "OpenCV", "FastAPI", "WebSockets"],
@@ -28,7 +28,7 @@ const PROJECTS: Project[] = [
     slug: "researchmate",
     title: "ResearchMate",
     description:
-      "A 3B instruction model fine-tuned with LoRA on PubMedQA/arXiv so it can answer research questions from scientific literature — evaluated on latency, quality, and hallucination behavior.",
+      "A 3B instruction model fine tuned with LoRA on PubMedQA/arXiv so it can answer research questions from scientific literature. Evaluated on latency, quality, and hallucination behavior.",
     year: "2026",
     status: "Completed",
     tech: ["Qwen2.5-3B", "LoRA", "TRL", "4-bit", "PubMedQA"],
@@ -38,7 +38,7 @@ const PROJECTS: Project[] = [
     slug: "math-tutor",
     title: "Math Tutor",
     description:
-      "Qwen2.5-1.5B-Instruct fine-tuned on GSM8K with QLoRA to solve math problems step-by-step. Trained on a Kaggle T4 with 4-bit quantization and published to Hugging Face.",
+      "Qwen2.5-1.5B-Instruct fine tuned on GSM8K with QLoRA to solve math problems step by step. Trained on a Kaggle T4 with 4-bit quantization and published to Hugging Face.",
     year: "2026",
     status: "Completed",
     tech: ["QLoRA", "GSM8K", "PEFT", "Transformers"],
@@ -48,8 +48,8 @@ const PROJECTS: Project[] = [
     slug: "rbc-anomaly",
     title: "RBC Anomaly Detection",
     description:
-      "End-to-end medical diagnostic pipeline detecting red blood cell anomalies with XGBoost (~92%+ validated accuracy) and SHAP explainability, plus LLM-generated clinical reports with a rule-based fallback for zero downtime.",
-    year: "2024–25",
+      "End to end medical diagnostic pipeline detecting red blood cell anomalies with XGBoost (~92%+ validated accuracy) and SHAP explainability, plus LLM generated clinical reports with a rule based fallback for zero downtime.",
+    year: "2024/25",
     status: "Completed",
     tech: ["XGBoost", "SHAP", "Ollama", "Qwen2.5-7B"],
     repo: "https://github.com/igmoiiz/Red-Blood-Cell-Anomaly-Detection-Pipeline",
@@ -58,7 +58,7 @@ const PROJECTS: Project[] = [
     slug: "visionforge",
     title: "VisionForge",
     description:
-      "Real-time, gesture-controlled augmented-reality effects — hand and pose tracking driving visual overlays on live camera input.",
+      "Real time, gesture controlled augmented reality effects. Hand and pose tracking drive visual overlays on live camera input.",
     year: "2026",
     status: "Completed",
     tech: ["OpenCV", "Gesture Control", "AR"],
@@ -68,7 +68,7 @@ const PROJECTS: Project[] = [
     slug: "jarvis",
     title: "J.A.R.V.I.S",
     description:
-      "Local-first, privacy-focused voice assistant: Whisper speech-to-text, Qwen2.5 reasoning, 40+ tool actions, and persistent memory for hands-free automation of repetitive tasks.",
+      "Local first, privacy focused voice assistant: Whisper speech-to-text, Qwen2.5 reasoning, 40+ tool actions, and persistent memory for hands-free automation of repetitive tasks.",
     year: "2026",
     status: "In Progress",
     tech: ["Whisper", "Ollama", "Qwen2.5", "Python"],
@@ -78,7 +78,7 @@ const PROJECTS: Project[] = [
     slug: "echo-projectx",
     title: "Echo-ProjectX",
     description:
-      "Offline-capable, file-system-based automation assistant — the engineering foundation for a J.A.R.V.I.S-style agent that runs without the cloud.",
+      "Offline capable, file system based automation assistant. The engineering foundation for a J.A.R.V.I.S style agent that runs without the cloud.",
     year: "2026",
     status: "In Progress",
     tech: ["Python", "File Systems", "Automation"],
@@ -88,7 +88,7 @@ const PROJECTS: Project[] = [
     slug: "blackholelab",
     title: "BlackHoleLab",
     description:
-      "A C++ computational-physics simulator exploring black-hole dynamics, particle trajectories, photon paths, gravitational lensing, and relativistic effects.",
+      "A C++ computational physics simulator exploring black hole dynamics, particle trajectories, photon paths, gravitational lensing, and relativistic effects.",
     year: "2026",
     status: "In Progress",
     tech: ["C++", "Physics", "Simulation"],
@@ -114,7 +114,7 @@ export default function Projects() {
   return (
     <section id="projects" className="mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-36 lg:px-16">
       <SectionHeading
-        index="03"
+        index="04"
         eyebrow="Selected Work"
         title={
           <>
@@ -122,7 +122,7 @@ export default function Projects() {
             <span className="font-serif italic text-champagne">built & shipped.</span>
           </>
         }
-        description="Model fine-tuning, computer vision, and AI systems — each with the engineering detail behind it. No screenshots, just the work."
+        description="Model fine tuning, computer vision, and AI systems, each with the engineering detail behind it. No screenshots, just the work."
       />
 
       <div className="grid gap-6 md:grid-cols-2">

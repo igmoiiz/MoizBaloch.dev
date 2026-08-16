@@ -12,35 +12,35 @@ const ITEMS: RoadmapItem[] = [
   {
     title: "AtlasLLM",
     description:
-      "A dense transformer LLM built from scratch in PyTorch — understanding and implementing transformer internals rather than only fine-tuning an existing model.",
+      "A dense transformer LLM built from scratch in PyTorch, focused on understanding and implementing transformer internals rather than only fine tuning an existing model.",
     status: "Planned",
     note: "priority build",
   },
   {
     title: "AtlasMoE",
     description:
-      "The successor to AtlasLLM: a Mixture-of-Experts LLM built from scratch, exploring sparse routing, distributed concepts, and efficient optimization.",
+      "The successor to AtlasLLM: a Mixture of Experts LLM built from scratch, exploring sparse routing, distributed concepts, and efficient optimization.",
     status: "Planned",
     note: "after atlasllm",
   },
   {
     title: "F.R.I.D.A.Y",
     description:
-      "The next-generation voice assistant evolving from J.A.R.V.I.S — deeper tool use, richer memory, and fully local-first operation.",
+      "The next generation voice assistant evolving from J.A.R.V.I.S, with deeper tool use, richer memory, and fully local first operation.",
     status: "In Progress",
     note: "successor to jarvis",
   },
   {
     title: "NeuroScope",
     description:
-      "A neural-network / ML reverse-engineering and visualization platform — a serious desktop project for exploring models from the inside.",
+      "A neural network and ML reverse engineering visualization platform. A serious desktop project for exploring models from the inside.",
     status: "Planned",
     note: "desktop tooling",
   },
   {
     title: "PhysicsLab AI",
     description:
-      "A scientific simulation platform combining physics, equations, and simulations — connecting AI engineering with scientific computing.",
+      "A scientific simulation platform combining physics, equations, and simulations, connecting AI engineering with scientific computing.",
     status: "Planned",
     note: "science + ai",
   },
@@ -51,7 +51,7 @@ export default function Roadmap() {
     <section id="roadmap" className="border-y border-white/[0.06] bg-[#080808]">
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-36 lg:px-16">
         <SectionHeading
-          index="04"
+          index="05"
           eyebrow="Roadmap"
           title={
             <>
@@ -59,7 +59,7 @@ export default function Roadmap() {
               <span className="font-serif italic text-champagne">in the lab.</span>
             </>
           }
-          description="Forward-looking builds I'm working toward. These are honest statuses — planned and in-progress, not claimed as shipped."
+          description="Forward looking builds I'm working toward. These are honest statuses: planned and in progress, not claimed as shipped."
         />
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -93,7 +93,7 @@ export default function Roadmap() {
           <Reveal delay={0.3}>
             <div className="flex h-full min-h-[220px] flex-col justify-between rounded-xl border border-white/[0.08] bg-[#0d0d0d] p-6">
               <p className="font-mono text-sm leading-relaxed text-muted-foreground">
-                <span className="text-champagne">&gt;</span> The pattern is deliberate — I keep moving down the stack:
+                <span className="text-champagne">&gt;</span> The pattern is deliberate. I keep moving down the stack:
                 from apps to APIs, models, and now model internals.
               </p>
               <span className="mt-6 font-mono text-xs uppercase tracking-[0.2em] text-white/25">

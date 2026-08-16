@@ -5,8 +5,8 @@ import SectionHeading from "@/components/section-heading"
 const PAPER = {
   title:
     "Adoption Readiness and Perceived Reliability of Generative AI Tools in Software Development Education",
-  journal: "Qualitative Research Journal for Social Studies (HEC-Recognized)",
-  volume: "3(2), pp. 293–320",
+  journal: "Qualitative Research Journal for Social Studies (HEC Recognized)",
+  volume: "3(2), pp. 293 to 320",
   year: "2026",
   authors: "A. Bilal, E. Qazi, A. Noor, A. Moiz, M.A. Lodhi",
   doi: "https://doi.org/10.63878/qrjs1100",
@@ -16,12 +16,12 @@ export default function Publications() {
   return (
     <section id="publications" className="mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-36 lg:px-16">
       <SectionHeading
-        index="05"
+        index="09"
         eyebrow="Publications"
         title={
           <>
             Research,{" "}
-            <span className="font-serif italic text-champagne">peer-reviewed.</span>
+            <span className="font-serif italic text-champagne">peer reviewed.</span>
           </>
         }
       />

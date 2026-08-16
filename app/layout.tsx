@@ -10,9 +10,9 @@ const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", sty
 const jetbrains = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains" })
 
 export const metadata: Metadata = {
-  title: "Moiz Baloch — AI/ML Engineer",
+  title: "Moiz Baloch, AI/ML Engineer",
   description:
-    "Portfolio of Moiz Baloch, an AI/ML engineer and CS undergraduate building machine-learning, deep-learning, and LLM systems from experimentation to deployment.",
+    "Portfolio of Moiz Baloch, an AI/ML engineer and CS undergraduate building machine learning, deep learning, and LLM systems from experimentation to deployment.",
 }
 
 export default function RootLayout({

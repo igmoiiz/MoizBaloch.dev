@@ -32,9 +32,9 @@ export default function Education() {
             </div>
             <h3 className="mt-6 font-serif text-2xl tracking-tight">B.S. Computer Science</h3>
             <p className="mt-2 text-muted-foreground">Air University, Multan Campus</p>
-            <p className="mt-4 font-mono text-sm text-champagne">Oct 2023 — Jun 2027</p>
+            <p className="mt-4 font-mono text-sm text-champagne">Oct 2023 to Jun 2027</p>
             <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-              Final-year project: <span className="text-foreground">Al-Safeena</span> — the live home-services
+              Final year project: <span className="text-foreground">Al-Safeena</span>, the live home services
               marketplace built for a Saudi Arabian client.
             </p>
           </div>

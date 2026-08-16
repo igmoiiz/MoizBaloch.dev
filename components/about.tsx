@@ -2,7 +2,7 @@ import Reveal from "@/components/reveal"
 
 const PHASES = [
   { num: "01", label: "Application engineering", tech: "Flutter · Dart · Firebase" },
-  { num: "02", label: "Full-stack systems", tech: "Node.js · MongoDB · Socket.IO" },
+  { num: "02", label: "Full stack systems", tech: "Node.js · MongoDB · Socket.IO" },
   { num: "03", label: "ML engineering", tech: "XGBoost · LightGBM · SHAP · Optuna" },
   { num: "04", label: "Deep learning & vision", tech: "PyTorch · YOLO · OpenCV · ByteTrack" },
   { num: "05", label: "LLM engineering", tech: "Transformers · LoRA · QLoRA · TRL" },
@@ -14,7 +14,7 @@ const STATS = [
   { value: "66+", label: "public repositories" },
   { value: "2", label: "production roles" },
   { value: "1", label: "published paper" },
-  { value: "3", label: "LLMs fine-tuned" },
+  { value: "3", label: "LLMs fine tuned" },
 ]
 
 export default function About() {
@@ -41,16 +41,16 @@ export default function About() {
             <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
               <p>
                 I started building production mobile and full-stack applications with Flutter, Node.js, and Firebase.
-                That engineering foundation taught me how to ship real products — and it became the base for the next
+                That engineering foundation taught me how to ship real products. It became the base for the next
                 step of the stack.
               </p>
               <p>
-                My work now centers on machine learning, deep learning, and LLM engineering: fine-tuning models with
-                QLoRA, building computer-vision systems, serving them through FastAPI, and engineering the deployment
+                My work now centers on machine learning, deep learning, and LLM engineering: fine tuning models with
+                QLoRA, building computer vision systems, serving them through FastAPI, and engineering the deployment
                 layer around them.
               </p>
               <p>
-                The strongest thread across my work is systems thinking — moving from an idea to a client, a backend, a
+                The strongest thread across my work is systems thinking: moving from an idea to a client, a backend, a
                 model, an API, and a deployment strategy. I build complete AI systems, not isolated notebooks.
               </p>
             </div>

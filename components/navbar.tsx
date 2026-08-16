@@ -8,6 +8,7 @@ import { smoothScrollTo } from "@/lib/smooth-scroll"
 
 const NAV_ITEMS = [
   { name: "About", id: "about" },
+  { name: "Mobile", id: "mobile-era" },
   { name: "Skills", id: "skills" },
   { name: "Projects", id: "projects" },
   { name: "Roadmap", id: "roadmap" },

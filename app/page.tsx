@@ -3,6 +3,7 @@
 import { useRef } from "react"
 import Hero from "@/components/hero"
 import About from "@/components/about"
+import MobileEra from "@/components/mobile-era"
 import Skills from "@/components/skills"
 import Projects from "@/components/projects"
 import Roadmap from "@/components/roadmap"
@@ -53,6 +54,7 @@ export default function Home() {
       <Marquee items={MARQUEE_ITEMS} />
 
       <About />
+      <MobileEra />
       <Skills />
       <Projects />
       <Roadmap />

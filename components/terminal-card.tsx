@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react"
 
 const LINES = [
-  { prompt: "$", text: "whoami", out: "moiz-baloch — ai/ml engineer" },
-  { prompt: ">", text: "cat focus.txt", out: "llm fine-tuning · computer vision · mlops" },
+  { prompt: "$", text: "whoami", out: "moiz baloch · ai/ml engineer" },
+  { prompt: ">", text: "cat focus.txt", out: "llm fine tuning · computer vision · mlops" },
   { prompt: "$", text: "deploy --model qwen-3b --quantize 4bit", out: "✓ served via FastAPI + Docker" },
   { prompt: ">", text: "status --now", out: "training AtlasLLM · building F.R.I.D.A.Y" },
 ]
@@ -52,7 +52,7 @@ export default function TerminalCard() {
             <span className="terminal-dot bg-white/15" />
             <span className="terminal-dot bg-champagne" />
           </div>
-          <span className="font-mono text-[11px] tracking-wider text-muted-foreground">moiz@portfolio — zsh</span>
+          <span className="font-mono text-[11px] tracking-wider text-muted-foreground">moiz@portfolio: zsh</span>
           <span className="hidden font-mono text-[11px] text-muted-foreground sm:block">80×24</span>
         </div>
 

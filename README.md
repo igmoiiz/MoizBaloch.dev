@@ -14,6 +14,7 @@ undergraduate building machine-learning, deep-learning, and LLM systems from exp
 ## Features
 
 - 3D neural-network hero (graceful fallback for reduced-motion / no WebGL)
+- Dedicated **Mobile era** section showcasing the Flutter application work
 - Terminal-style animated project cards with GitHub links — no screenshots
 - Dedicated **Roadmap** section for planned work (AtlasLLM, AtlasMoE, NeuroScope…)
 - **Publications** section (HEC-recognized Generative AI paper)
